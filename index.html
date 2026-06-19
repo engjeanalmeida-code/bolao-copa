@@ -51,22 +51,23 @@
   .rules-list .rule-num { color: #f78c1f; font-weight: 700; flex-shrink: 0; }
 
   .pix-block .pix-title { font-size: 13px; color: #93c5fd; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .pix-block .pix-name { font-size: 15px; font-weight: 800; margin-bottom: 10px; color: #ffffff; }
-  .pix-row { display: flex; gap: 8px; align-items: center; }
-  .pix-key {
-    flex: 1;
-    background: #020c1f;
-    border: 1px solid #1e3a8a60;
-    border-radius: 8px;
-    padding: 10px 12px;
+  .pix-block .pix-name { font-size: 15px; font-weight: 800; margin-bottom: 14px; color: #ffffff; }
+  .pix-qr-wrap { display: flex; justify-content: center; margin-bottom: 14px; }
+  .pix-qr-wrap div { border-radius: 10px; background: #fff; padding: 10px; display: inline-block; }
+  .pix-qr-wrap img { display: block; }
+  .pix-divider-text { text-align: center; font-size: 11px; color: #93c5fd; margin-bottom: 12px; letter-spacing: 0.5px; }
+  .pix-copiacola-btn {
+    width: 100%;
+    background: #1f6feb;
+    border-color: #1f6feb;
+    color: #fff;
+    font-weight: 700;
+    padding: 12px;
     font-size: 14px;
-    font-family: "SFMono-Regular", Consolas, Menlo, monospace;
-    letter-spacing: 0.3px;
-    color: #e2e8f0;
+    border-radius: 8px;
   }
-  .pix-copy-btn { background: #1f6feb; border-color: #1f6feb; color: #fff; font-weight: 600; }
-  .pix-copy-btn:hover { background: #388bfd; }
-  .pix-copy-btn.copied { background: #238636; border-color: #238636; }
+  .pix-copiacola-btn:hover { background: #388bfd; }
+  .pix-copiacola-btn.copied { background: #238636; border-color: #238636; }
 
   .section { margin-bottom: 24px; }
   .label { font-size: 13px; color: #93c5fd; margin-bottom: 8px; display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -324,6 +325,7 @@
 }
 
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -383,11 +385,12 @@
 
     <div class="pix-block">
       <div class="pix-title">Pagamento via Pix</div>
-      <div class="pix-name">Jean A. Nascimento</div>
-      <div class="pix-row">
-        <span class="pix-key" id="pix-key">04799520350</span>
-        <button id="pix-copy-btn" class="pix-copy-btn">Copiar</button>
+      <div class="pix-name">Jean A. Nascimento · R$ 10,00</div>
+      <div class="pix-qr-wrap">
+        <div id="pix-qr-canvas"></div>
       </div>
+      <div class="pix-divider-text">— ou copie o código abaixo —</div>
+      <button id="pix-copiacola-btn" class="pix-copiacola-btn">📋 Copiar código Pix (copia e cola)</button>
     </div>
 
     <hr class="divider">
@@ -507,8 +510,7 @@
   const guessList = document.getElementById("guess-list");
   const countBadge = document.getElementById("count-badge");
   const totalAmountEl = document.getElementById("total-amount");
-  const pixCopyBtn = document.getElementById("pix-copy-btn");
-  const pixKeyEl = document.getElementById("pix-key");
+  const pixCopiaColaBtn = document.getElementById("pix-copiacola-btn");
   const adminLink = document.getElementById("admin-link");
   const adminGate = document.getElementById("admin-gate");
   const adminPassword = document.getElementById("admin-password");
@@ -524,6 +526,7 @@
   const RESULT_ID = 1;
   const ORG_CUT_WIN = 0.05;
   const ORG_CUT_NO_WIN = 0.10;
+  const PIX_COPIA_COLA = "00020126400014br.gov.bcb.pix0111047995203500203Pix520400005303986540510.005802BR5923JEAN_ALMEIDA_NASCIMENTO6008SAO_LUIS62290525kMj65jQ3PfgHDTzqNGeTDiRSC63041989";
 
   let myName = null;
   let isAdmin = false;
@@ -553,24 +556,35 @@
     }
   }
 
-  pixCopyBtn.addEventListener("click", async function() {
-    const key = pixKeyEl.textContent.trim();
+  // Gerar QR Code Pix
+  var qrDiv = document.getElementById("pix-qr-canvas");
+  new QRCode(qrDiv, {
+    text: PIX_COPIA_COLA,
+    width: 180,
+    height: 180,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
+  // Botão copia e cola
+  pixCopiaColaBtn.addEventListener("click", async function() {
     try {
-      await navigator.clipboard.writeText(key);
+      await navigator.clipboard.writeText(PIX_COPIA_COLA);
     } catch (e) {
       const ta = document.createElement("textarea");
-      ta.value = key;
+      ta.value = PIX_COPIA_COLA;
       document.body.appendChild(ta);
       ta.select();
       document.execCommand("copy");
       document.body.removeChild(ta);
     }
-    pixCopyBtn.textContent = "Copiado!";
-    pixCopyBtn.classList.add("copied");
+    pixCopiaColaBtn.textContent = "✅ Código copiado!";
+    pixCopiaColaBtn.classList.add("copied");
     setTimeout(function() {
-      pixCopyBtn.textContent = "Copiar";
-      pixCopyBtn.classList.remove("copied");
-    }, 2000);
+      pixCopiaColaBtn.textContent = "📋 Copiar código Pix (copia e cola)";
+      pixCopiaColaBtn.classList.remove("copied");
+    }, 2500);
   });
 
   adminLink.addEventListener("click", function() {
