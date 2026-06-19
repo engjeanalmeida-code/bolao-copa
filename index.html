@@ -236,12 +236,39 @@
 
   .bolao-title {
     text-align: center;
-    font-size: 32px;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .bolao-title .line1 {
+    display: block;
+    font-size: 38px;
     font-weight: 900;
-    color: #f78c1f;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
-    text-shadow: 0 0 20px #f78c1f88, 0 2px 4px #00000066;
+    font-style: italic;
+    color: #f5c200;
+    -webkit-text-stroke: 4px #1a4a1a;
+    text-stroke: 4px #1a4a1a;
+    paint-order: stroke fill;
+    text-shadow:
+      3px 3px 0 #1a4a1a,
+      -1px -1px 0 #1a4a1a,
+      4px 6px 8px #00000099;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .bolao-title .line2 {
+    display: block;
+    font-size: 34px;
+    font-weight: 900;
+    font-style: italic;
+    color: #ffffff;
+    -webkit-text-stroke: 4px #1a4a1a;
+    text-stroke: 4px #1a4a1a;
+    paint-order: stroke fill;
+    text-shadow:
+      3px 3px 0 #1a4a1a,
+      -1px -1px 0 #1a4a1a,
+      4px 6px 8px #00000099;
+    letter-spacing: 2px;
     text-transform: uppercase;
   }
 
@@ -303,7 +330,8 @@
 <div id="splash">
   <div class="splash-content">
       <img src="splash.png" class="splash-logo" alt="Bolão da Copa">
-      <div class="splash-title">BOLÃO DA COPA</div>
+  </div>
+</div>
   </div>
 </div>
 
@@ -311,7 +339,10 @@
 
   <div class="main-card">
     <div class="match-block">
-      <div class="bolao-title">BOLÃO</div>
+      <div class="bolao-title">
+        <span class="line1">BOLÃO</span>
+        <span class="line2">DA COPA</span>
+      </div>
       <div class="competition">Copa do Mundo FIFA 2026 · Grupo C</div>
       <div class="teams">
         <div class="team">
@@ -904,8 +935,8 @@
   const splash = document.getElementById("splash");
   setTimeout(function() {
     splash.classList.add("fade-out");
-    setTimeout(function() { splash.style.display = "none"; }, 500);
-  }, 4000);
+    setTimeout(function() { splash.style.display = "none"; }, 400);
+  }, 1000);
 
   init();
 
