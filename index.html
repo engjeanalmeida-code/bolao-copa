@@ -265,12 +265,46 @@
     opacity: 0;
     pointer-events: none;
   }
+
+.splash-content{
+    text-align:center;
+}
+.splash-logo{
+    width:320px;
+    max-width:90vw;
+    opacity:0;
+    animation: logoAppear 1.2s ease forwards;
+}
+.splash-title{
+    margin-top:20px;
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#ffd700;
+    text-shadow:0 0 10px rgba(255,215,0,.8),0 0 30px rgba(255,215,0,.5);
+    opacity:0;
+    transform:translateY(30px);
+    animation:titleAppear 1s ease forwards;
+    animation-delay:1.3s;
+}
+@keyframes logoAppear{
+    from{opacity:0;transform:scale(.7);}
+    to{opacity:1;transform:scale(1);}
+}
+@keyframes titleAppear{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
 </style>
 </head>
 <body>
 
 <div id="splash">
-  <img src="splash.png" alt="Bolão da Copa">
+  <div class="splash-content">
+      <img src="splash.png" class="splash-logo" alt="Bolão da Copa">
+      <div class="splash-title">BOLÃO DA COPA</div>
+  </div>
 </div>
 
 <div class="container">
@@ -871,7 +905,7 @@
   setTimeout(function() {
     splash.classList.add("fade-out");
     setTimeout(function() { splash.style.display = "none"; }, 500);
-  }, 1500);
+  }, 4000);
 
   init();
 
