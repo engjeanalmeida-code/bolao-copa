@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bolão Brasil x Japão - Copa do Mundo 2026</title>
+<title>Bolão Brasil x Noruega - Copa do Mundo 2026</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -352,12 +352,12 @@
         <div class="vs">x</div>
         <div class="team">
           <div class="team-flag">
-            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg"><rect width="720" height="504" fill="#fff"/><circle cx="360" cy="252" r="144" fill="#bc002d"/></svg>
+            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg"><rect width="720" height="504" fill="#EF2B2D"/><rect x="0" y="196" width="720" height="112" fill="#fff"/><rect x="196" y="0" width="112" height="504" fill="#fff"/><rect x="0" y="210" width="720" height="84" fill="#003087"/><rect x="210" y="0" width="84" height="504" fill="#003087"/></svg>
           </div>
-          <div class="team-name">Japão</div>
+          <div class="team-name">Noruega</div>
         </div>
       </div>
-      <div class="match-info">Seg, 29/06/2026 · 14h00 (Brasília) · Estádio de Houston, Houston</div>
+      <div class="match-info">Dom, 05/07/2026 · 17h00 (Brasília) · MetLife Stadium, Nova Jersey · Oitavas de final</div>
     </div>
 
     <hr class="divider">
@@ -370,10 +370,10 @@
     <div class="rules-block">
       <div class="rules-title">Regras do bolão</div>
       <ul class="rules-list">
-        <li><span class="rule-num">1.</span><span>Palpites aceitos somente até <span style="color:#f5c200;font-weight:700;">14h do dia 29/06/2026</span>.</span></li>
-        <li><span class="rule-num">2.</span><span>Cada pessoa pode palpitar <span style="color:#f5c200;font-weight:700;">quantas vezes quiser</span>, pagando o valor de R$ 10,00 por palpite.</span></li>
+        <li><span class="rule-num">1.</span><span>Palpites aceitos somente até <span style="color:#f5c200;font-weight:700;">16:55h do dia 05/07/2026</span>, válidos apenas para os 90 minutos de jogo.</span></li>
+        <li><span class="rule-num">2.</span><span>Cada pessoa pode palpitar <span style="color:#f5c200;font-weight:700;">quantas vezes quiser</span>, pagando o valor de R$ 10,00 por palpite. <span style="color:#f5c200;font-weight:700;text-transform:uppercase;">O PAGAMENTO VIA PIX DEVE SER REALIZADO PELA CONTA DO MESMO NOME CADASTRADO NO PALPITE</span>, para facilitar a identificação pelo organizador.</span></li>
         <li><span class="rule-num">3.</span><span>Vence o bolão somente quem acertar o <span style="color:#f5c200;font-weight:700;">placar exato</span> do jogo, recebendo o valor total arrecadado <span style="color:#f5c200;font-weight:700;text-transform:uppercase;">COM RETENÇÃO DE 5% PARA O ORGANIZADOR DO BOLÃO</span>.</span></li>
-        <li><span class="rule-num">4.</span><span>Caso ninguém acerte o placar, o valor fica <span style="color:#f5c200;font-weight:700;">acumulado</span> para a próxima partida, retendo-se 10% do valor total arrecadado para o organizador do bolão.</span></li>
+        <li><span class="rule-num">4.</span><span>Caso ninguém acerte o placar, o valor fica <span style="color:#f5c200;font-weight:700;">acumulado</span> para a próxima partida, retendo-se 5% do valor total arrecadado para o organizador do bolão.</span></li>
         <li><span class="rule-num">5.</span><span>Após enviar seu palpite ele aparecerá como <span style="color:#d29922;font-weight:700;">Pendente</span>. Tão logo o organizador identifique o Pix, o status será alterado para <span style="color:#3fb950;font-weight:700;">Pago</span>.</span></li>
       </ul>
     </div>
@@ -392,7 +392,7 @@
     <div id="closed-notice" style="display:none;">
       <div class="closed-box">
         <span class="closed-badge">Encerrado</span>
-        <span class="closed-text">O prazo para palpites terminou às 14h de 29/06/2026.</span>
+        <span class="closed-text">O prazo para palpites terminou às 16:55h de 05/07/2026.</span>
       </div>
     </div>
 
@@ -422,7 +422,7 @@
           </div>
           <div class="score-x">x</div>
           <div class="score-box">
-            <div class="team-label">Japão</div>
+            <div class="team-label">Noruega</div>
             <input type="number" id="score-ht" min="0" max="20" value="0">
           </div>
         </div>
@@ -438,7 +438,7 @@
           </div>
           <div class="score-x">x</div>
           <div class="score-box">
-            <div class="team-label">Japão</div>
+            <div class="team-label">Noruega</div>
             <input type="number" id="score-ht2" min="0" max="20" value="0">
           </div>
         </div>
@@ -479,7 +479,7 @@
           </div>
           <div class="score-x">x</div>
           <div class="score-box">
-            <div class="team-label">Japão</div>
+            <div class="team-label">Noruega</div>
             <input type="number" id="final-score-ht" min="0" max="20">
           </div>
         </div>
@@ -502,7 +502,7 @@
     </div>
   </div>
 
-  <div class="footer-note">Bolão Brasil x Japão · Copa do Mundo 2026</div>
+  <div class="footer-note">Bolão Brasil x Noruega · Copa do Mundo 2026</div>
 </div>
 
 <script>
@@ -512,8 +512,8 @@
   const ADMIN_STORAGE_KEY = "bolao_admin_unlocked";
   const ADMIN_PASSWORD = "0101";
   const VALOR_PALPITE = 10;
-  // Prazo: 29/06/2026, 14h00 horário de Brasília (UTC-3) = 29/06/2026 17:00 UTC
-  const DEADLINE = new Date("2026-06-29T17:00:00Z");
+  // Prazo: 05/07/2026, 16h55 horário de Brasília (UTC-3) = 05/07/2026 19:55 UTC
+  const DEADLINE = new Date("2026-07-05T19:55:00Z");
 
   const closedNotice = document.getElementById("closed-notice");
   const nameGate = document.getElementById("name-gate");
@@ -546,7 +546,7 @@
 
   const RESULT_ID = 1;
   const ORG_CUT_WIN = 0.05;
-  const ORG_CUT_NO_WIN = 0.10;
+  const ORG_CUT_NO_WIN = 0.05;
   const PIX_COPIA_COLA_10 = "00020126580014BR.GOV.BCB.PIX0136550272d9-169f-4a40-8378-a3c6ed83ee76520400005303986540510.005802BR5923Jean Almeida Nascimento6009SAO PAULO62140510cjtwabCQZB6304FE00";
   const PIX_COPIA_COLA_20 = "00020126580014BR.GOV.BCB.PIX0136550272d9-169f-4a40-8378-a3c6ed83ee76520400005303986540520.005802BR5923Jean Almeida Nascimento6009SAO PAULO62140510z0yLwd76UB6304A4E3";
 
@@ -821,7 +821,7 @@
     let html = '<div class="final-score-display">' +
       '<span class="fs-team">Brasil</span><span class="fs-value">' + fBr + '</span>' +
       '<span class="fs-x">x</span>' +
-      '<span class="fs-value">' + fHt + '</span><span class="fs-team">Japão</span>' +
+      '<span class="fs-value">' + fHt + '</span><span class="fs-team">Noruega</span>' +
     '</div>';
 
     if (winners.length === 0) {
